@@ -1,7 +1,7 @@
 ---
-title: "Example Manuscript Template for a Data Analysis Project"
-subtitle: ""
-author: Andreas Handel
+title: "Data Analysis Project"
+subtitle: DA-6833
+author: Rinu Thomas
 date: "`r Sys.Date()`"
 format:
   docx:
@@ -12,159 +12,277 @@ bibliography: ../../assets/dataanalysis-references.bib
 csl: ../../assets/apa.csl
 ---
 
-The structure below is one possible setup for a data analysis project (including the course project). For a manuscript, adjust as needed. 
-You don't need to have exactly these sections, but the content covering those sections should be addressed.
-
-This uses MS Word as output format. [See here](https://quarto.org/docs/output-formats/ms-word.html) for more information. You can switch to other formats, like html or pdf. See [the Quarto documentation](https://quarto.org/) for other formats.
-
-
 ```{r, echo=FALSE, message=FALSE}
 # load a few R packages
 library(here)
 library(knitr)
+library(dplyr)
+library(ggplot2)
 ```
-
-
 
 # Summary/Abstract
-_Write a summary of your project._
 
+The primary goal of this research project is to develop a predictive model to estimate medical insurance costs for individuals based on their health-related and personal attributes. This model will help in understanding the key factors influencing insurance charges and assist insurance companies in pricing policies more accurately.
 
-{{< pagebreak >}}
-
-
-# Introduction 
+# Introduction
 
 ## General Background Information
-_Provide enough background on your topic that others can understand the why and how of your analysis_ 
+
+### Importance of Predictive Modeling in Insurance
+
+Predictive modeling plays a vital role in the insurance industry. Accurate predictions of insurance costs enable companies to:
+
+-   Assess risk more effectively.
+
+-   Set premiums that reflect the actual risk associated with individual policyholders.
+
+-   Enhance customer satisfaction by offering personalized and fair pricing.
+
+On the consumer side, individuals can benefit from understanding the factors that influence their insurance costs, allowing them to make informed choices about their health and financial planning.
 
 ## Description of data and data source
-_Describe what the data is, what it contains, where it is from, etc. Eventually this might be part of a methods section._
+
+*Describe what the data is, what it contains, where it is from, etc. Eventually this might be part of a methods section.*
+
+The dataset used for this analysis is sourced from Kaggle. The dataset comprises 2.7K rows and 7 columns and contains the following features:
+
+-   **Age**: Age of the individual.
+
+-   **Sex**: Gender of the individual (male/female).
+
+-   **BMI (Body Mass Index)**: A measure of body fat based on height and weight.
+
+-   **Children**: Number of children/dependents covered by the insurance plan.
+
+-   **Smoker**: Smoking status of the individual (yes/no).
+
+-   **Region**: Geographical region in the US where the individual resides (northeast, southeast, southwest, northwest).
+
+-   **Charges**: Medical insurance costs billed by the insurance company (target variable).
 
 ## Questions/Hypotheses to be addressed
-_State the research questions you plan to answer with this analysis._
 
-To cite other work (important everywhere, but likely happens first in introduction), make sure your references are in the bibtex file specified in the YAML header above and have the right bibtex key. Then you can include like this:
+*State the research questions you plan to answer with this analysis.*
 
-Examples of reproducible research projects can for instance be found in [@mckay2020; @mckay2020a].
+The primary question we aim to answer using the "Medical Insurance Cost Prediction" dataset is:
 
+**"What are the key factors influencing medical insurance costs, and how accurately can we predict these costs based on individuals' demographic and health-related attributes?"**
 
+### Outcomes of Interest
 
-{{< pagebreak >}}
+The main outcome of interest in this analysis is:
 
+-   **Medical Insurance Costs (charges)**: The amount billed by the insurance company for an individual's medical insurance.
 
-# Methods 
+### Specific Predictors
 
-_Describe your methods. That should describe the data, the cleaning processes, and the analysis approaches. You might want to provide a shorter description here and all the details in the supplement._
+The specific predictors (independent variables) we will focus on include:
 
+-   **Age**: How age influences insurance costs.
 
-## Schematic of workflow
+-   **Sex**: The impact of gender on insurance costs.
 
-Sometimes you might want to show a schematic diagram/figure that was not created with code (if you can do it with code, do it). @fig-schematic is an example of some - completely random/unrelated - schematic that was generated with Biorender.
-We store those figures in the `assets` folder.
+-   **BMI (Body Mass Index)**: The relationship between BMI and insurance costs.
 
-```{r}
-#| label: fig-schematic
-#| fig-cap: "A figure that is manually generated and shows some overview/schematic. This has nothing to do with the data, it's just a random one from one of our projects I found and placed here."
-#| echo: FALSE
-knitr::include_graphics(here("assets","antigen-recognition.png"))
-```
+-   **Children**: How the number of dependents affects insurance costs.
 
+-   **Smoker**: The effect of smoking status on insurance costs.
 
+-   **Region**: Regional differences in insurance costs within the US.
 
+### Relations/Patterns of Interest
 
-## Data aquisition
-_As applicable, explain where and how you got the data. If you directly import the data from an online source, you can combine this section with the next._
+I am looking for several key relationships and patterns in the data, including:
 
+1.  **Age and Insurance Costs**:Investigating whether older individuals tend to have higher medical insurance costs.
+
+2.  **Gender Differences**:Analyzing whether there is a significant difference in insurance costs between males and females.
+
+3.  **BMI and Insurance Costs**:Exploring the relationship between an individual's BMI and their medical insurance costs.Identifying any nonlinear patterns where very high or very low BMI values might correlate with higher insurance costs.
+
+4.  **Impact of Smoking**:Assessing how smoking status (yes/no) affects insurance costs.Quantifying the cost difference between smokers and non-smokers.
+
+5.  **Number of Children**: Examining whether having more dependents (children) increases insurance costs.
+
+6.  **Regional Variations**: Identifying differences in insurance costs across different regions in the US (northeast, southeast, southwest, northwest).
+
+# Methods
+
+*Describe your methods. That should describe the data, the cleaning processes, and the analysis approaches. You might want to provide a shorter description here and all the details in the supplement.*
+
+The methods used to clean, process and analyze the are as follows:
+
+-   **Data Cleaning and Preprocessing:**
+    -   Load the data
+    -   Convert categorical variable
+    -   Identify missing values
+    -   Find Outliers
+-   **Exploratory Data Analysis:**
+    -   Summarize the data
+    -   Visualize the data
+-   **Model building and Analysis Approach:**
+    -   Train-Test split the data
+    -   Linear Regression Model
+    -   Random Forest Model
+    -   Model Evaluation
 
 ## Data import and cleaning
-_Write code that reads in the file and cleans it so it's ready for analysis. Since this will be fairly long code for most datasets, it might be a good idea to have it in one or several R scripts. If that is the case, explain here briefly what kind of cleaning/processing you do, and provide more details and well documented code somewhere (e.g. as supplement in a paper). All materials, including files that contain code, should be commented well so everyone can follow along._
 
+*Write code that reads in the file and cleans it so it's ready for analysis. Since this will be fairly long code for most datasets, it might be a good idea to have it in one or several R scripts. If that is the case, explain here briefly what kind of cleaning/processing you do, and provide more details and well documented code somewhere (e.g. as supplement in a paper). All materials, including files that contain code, should be commented well so everyone can follow along.*
+
+The dataset used in this analysis is sourced from Kaggle. The dataset was downloaded directly from Kaggle website. It can be accessed at the following URL: [Medical Insurance Cost Prediction](https://www.kaggle.com/datasets/rahulvyasm/medical-insurance-cost-prediction).
+
+The methods used to clean, process and analyze the are as follows:
+
+-   **Data Cleaning and Preprocessing:**
+    -   Load the data (can be found in processingcode2.R)
+    -   Convert categorical variable (can be found in processingcode2.R)
+    -   Identify missing values (can be found in processingcode2.R)
+    -   Find Outlier (can be found in eda2.R)
+-   **Exploratory Data Analysis:**
+    -   Summarize the data (can be found in eda2.R)
+    -   Visualize the data (can be found in eda2.R)
+-   **Model building and Analysis Approach: *(Have not started yet)***
+    -   Train-Test split the data
+    -   Linear Regression Model
+    -   Random Forest Model
+    -   Model Evaluation
 
 ## Statistical analysis
-_Explain anything related to your statistical analyses._
 
+The data will be built and analyzed as follows:
 
-{{< pagebreak >}}
-
+-   **Model building and Analysis Approach: *(Have not started yet)***
+    -   Train-Test split the data
+    -   Linear Regression Model
+    -   Random Forest Model
+    -   Model Evaluation
 
 # Results
 
 ## Exploratory/Descriptive analysis
 
-_Use a combination of text/tables/figures to explore and describe your data. Show the most important descriptive results here. Additional ones should go in the supplement. Even more can be in the R and Quarto files that are part of your project._
-
+*Use a combination of text/tables/figures to explore and describe your data. Show the most important descriptive results here. Additional ones should go in the supplement. Even more can be in the R and Quarto files that are part of your project.*
 
 @tbl-summarytable shows a summary of the data.
-
-Note the loading of the data providing a **relative** path using the `../../` notation. (Two dots means a folder up). You never want to specify an **absolute** path like `C:\ahandel\myproject\results\` because if you share this with someone, it won't work for them since they don't have that path. You can also use the `here` R package to create paths. See examples of that below. I generally recommend the `here` package.
 
 ```{r}
 #| label: tbl-summarytable
 #| tbl-cap: "Data summary table."
 #| echo: FALSE
-resulttable=readRDS("../../results/tables/summarytable.rds")
+resulttable=readRDS("../../results/tables/summarytable2.rds")
 knitr::kable(resulttable)
 ```
 
+@fig-outliers-bmi shows the outliers in BMI
 
+```{r}
+#| label: fig-outliers-bmi
+#| fig-cap: "BMI Outliers"
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","bmi_outliers.png"))
+```
+
+@fig-outliers-charges shows the outliers in charges
+
+```{r}
+#| label: fig-outliers-charges
+#| fig-cap: "Charges Outliers"
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","charges-outliers.png"))
+
+```
+
+@fig-charges shows histogram of insurance charges
+
+```{r}
+#| label: fig-charges
+#| fig-cap: "Distribution of Insurance charges"
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","Charges-histogram.png"))
+```
+
+@fig-smoking shows box plot of insurance charges by smoking status
+
+```{r}
+#| label: fig-smoking
+#| fig-cap: "Insurance Charges by smoking status."
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","charges-smoking-boxplot.png"))
+
+```
+
+@fig-region shows box plot of insurance charges by region
+
+```{r}
+#| label: fig-region
+#| fig-cap: "Insurance Charges by Region."
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","charges-region-boxplot.png"))
+```
+
+@fig-age shows scatter plot of insurance charges by age
+
+```{r}
+#| label: fig-age
+#| fig-cap: "Insurance Charges by Age."
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","charge-age-boxplot.png"))
+```
+
+@fig-bmi shows scatter plot of insurance by BMI
+
+```{r}
+#| label: fig-bmi
+#| fig-cap: "Insurance Charges by BMI."
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","charge-bmi-scatter.png"))
+```
+
+@fig-children shows bar graph of average insurance charges by number of children
+
+```{r}
+#| label: fig-chidren
+#| fig-cap: "Average Insurance Charges by Number of Children."
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","children-bar.png"))
+```
 
 ## Basic statistical analysis
 
-_To get some further insight into your data, if reasonable you could compute simple statistics (e.g. simple models with 1 predictor) to look for associations between your outcome(s) and each individual predictor variable. Though note that unless you pre-specified the outcome and main exposure, any "p<0.05 means statistical significance" interpretation is not valid._
-
-
-@fig-result shows a scatterplot figure produced by one of the R scripts.
-
-```{r}
-#| label: fig-result
-#| fig-cap: "Height and weight stratified by gender."
-#| echo: FALSE
-knitr::include_graphics(here("results","figures","height-weight-stratified.png"))
-```
-
+*To get some further insight into your data, if reasonable you could compute simple statistics (e.g. simple models with 1 predictor) to look for associations between your outcome(s) and each individual predictor variable. Though note that unless you pre-specified the outcome and main exposure, any "p\<0.05 means statistical significance" interpretation is not valid.*
 
 ## Full analysis
 
-_Use one or several suitable statistical/machine learning methods to analyze your data and to produce meaningful figures, tables, etc. This might again be code that is best placed in one or several separate R scripts that need to be well documented. You want the code to produce figures and data ready for display as tables, and save those. Then you load them here._
+*Use one or several suitable statistical/machine learning methods to analyze your data and to produce meaningful figures, tables, etc. This might again be code that is best placed in one or several separate R scripts that need to be well documented. You want the code to produce figures and data ready for display as tables, and save those. Then you load them here.*
 
-Example @tbl-resulttable2 shows a summary of a linear model fit.
-
-```{r}
-#| label: tbl-resulttable2
-#| tbl-cap: "Linear model fit table."
-#| echo: FALSE
-resulttable2 = readRDS(here("results","tables","resulttable2.rds"))
-knitr::kable(resulttable2)
+```{}
 ```
 
-
 {{< pagebreak >}}
-
 
 # Discussion
 
 ## Summary and Interpretation
-_Summarize what you did, what you found and what it means._
+
+*Summarize what you did, what you found and what it means.*
 
 ## Strengths and Limitations
-_Discuss what you perceive as strengths and limitations of your analysis._
+
+*Discuss what you perceive as strengths and limitations of your analysis.*
 
 ## Conclusions
-_What are the main take-home messages?_
 
-_Include citations in your Rmd file using bibtex, the list of references will automatically be placed at the end_
+*What are the main take-home messages?*
 
-This paper [@leek2015] discusses types of analyses. 
+*Include citations in your Rmd file using bibtex, the list of references will automatically be placed at the end*
 
-These papers [@mckay2020; @mckay2020a] are good examples of papers published using a fully reproducible setup similar to the one shown in this template. 
+This paper [@leek2015] discusses types of analyses.
+
+These papers [@mckay2020; @mckay2020a] are good examples of papers published using a fully reproducible setup similar to the one shown in this template.
 
 Note that this cited reference will show up at the end of the document, the reference formatting is determined by the CSL file specified in the YAML header. Many more style files for almost any journal [are available](https://www.zotero.org/styles). You also specify the location of your bibtex reference file in the YAML. You can call your reference file anything you like.
-
 
 {{< pagebreak >}}
 
 # References
-
-
-
