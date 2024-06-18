@@ -42,8 +42,6 @@ On the consumer side, individuals can benefit from understanding the factors tha
 
 ## Description of data and data source
 
-*Describe what the data is, what it contains, where it is from, etc. Eventually this might be part of a methods section.*
-
 The dataset used for this analysis is sourced from Kaggle. The dataset comprises 2.7K rows and 7 columns and contains the following features:
 
 -   **Age**: Age of the individual.
@@ -61,8 +59,6 @@ The dataset used for this analysis is sourced from Kaggle. The dataset comprises
 -   **Charges**: Medical insurance costs billed by the insurance company (target variable).
 
 ## Questions/Hypotheses to be addressed
-
-*State the research questions you plan to answer with this analysis.*
 
 The primary question we aim to answer using the "Medical Insurance Cost Prediction" dataset is:
 
@@ -108,8 +104,6 @@ I am looking for several key relationships and patterns in the data, including:
 
 # Methods
 
-*Describe your methods. That should describe the data, the cleaning processes, and the analysis approaches. You might want to provide a shorter description here and all the details in the supplement.*
-
 The methods used to clean, process and analyze the are as follows:
 
 -   **Data Cleaning and Preprocessing:**
@@ -127,8 +121,6 @@ The methods used to clean, process and analyze the are as follows:
     -   Model Evaluation
 
 ## Data import and cleaning
-
-*Write code that reads in the file and cleans it so it's ready for analysis. Since this will be fairly long code for most datasets, it might be a good idea to have it in one or several R scripts. If that is the case, explain here briefly what kind of cleaning/processing you do, and provide more details and well documented code somewhere (e.g. as supplement in a paper). All materials, including files that contain code, should be commented well so everyone can follow along.*
 
 The dataset used in this analysis is sourced from Kaggle. The dataset was downloaded directly from Kaggle website. It can be accessed at the following URL: [Medical Insurance Cost Prediction](https://www.kaggle.com/datasets/rahulvyasm/medical-insurance-cost-prediction).
 
@@ -161,8 +153,6 @@ The data will be built and analyzed as follows:
 # Results
 
 ## Exploratory/Descriptive analysis
-
-*Use a combination of text/tables/figures to explore and describe your data. Show the most important descriptive results here. Additional ones should go in the supplement. Even more can be in the R and Quarto files that are part of your project.*
 
 @tbl-summarytable shows a summary of the data.
 
@@ -250,8 +240,6 @@ knitr::include_graphics(here("results","figures","children-bar.png"))
 
 ## Basic statistical analysis
 
-*To get some further insight into your data, if reasonable you could compute simple statistics (e.g. simple models with 1 predictor) to look for associations between your outcome(s) and each individual predictor variable. Though note that unless you pre-specified the outcome and main exposure, any "p\<0.05 means statistical significance" interpretation is not valid.*
-
 @tbl-resulttable1 shows a simple model with one predictor using linear regression analysis.
 
 ```{r}
@@ -263,8 +251,6 @@ knitr::kable(simpletable)
 ```
 
 ## Full analysis
-
-*Use one or several suitable statistical/machine learning methods to analyze your data and to produce meaningful figures, tables, etc. This might again be code that is best placed in one or several separate R scripts that need to be well documented. You want the code to produce figures and data ready for display as tables, and save those. Then you load them here.*
 
 @tbl-resulttable2 shows linear regression analysis charges is analyzed across all predictors.
 
