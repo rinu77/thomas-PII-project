@@ -107,7 +107,7 @@ figure_file = here("results", "figures", "Charges-histogram.png")
 ggsave(filename = figure_file, plot=p3) 
 ```
 
-Once more height as function of weight, stratified by gender. Note that there is so little data, it's a bit silly. But we'll plot it anyway.
+Now let's look at a boxplot for charges by smoking status
 
 ```{r}
 p4 <- mydata %>% ggplot(aes(x=smoker, y=charges, fill=smoker)) +
@@ -120,6 +120,8 @@ figure_file = here("results", "figures", "charges-smoking-boxplot.png")
 ggsave(filename = figure_file, plot=p4) 
 ```
 
+Boxplot for charges by region
+
 ```{r}
 p5 <- mydata %>% ggplot(aes(x=region, y=charges, fill=region)) +
   geom_boxplot() +
@@ -130,7 +132,7 @@ figure_file = here("results", "figures", "charges-region-boxplot.png")
 ggsave(filename = figure_file, plot=p5) 
 ```
 
-
+Scatter plot for charges by age
 ```{r}
 p6 <- mydata %>% ggplot(aes(x=age, y=charges)) +
   geom_point(alpha=0.5, color="blue") +
@@ -141,7 +143,7 @@ figure_file = here("results", "figures", "charge-age-boxplot.png")
 ggsave(filename = figure_file, plot=p6) 
 ```
 
-
+Scatter plot for charges by BMI
 ```{r}
 p7 <- mydata %>% ggplot(aes(x=bmi, y=charges)) +
   geom_point(alpha=0.5, color="green") +
@@ -152,7 +154,7 @@ figure_file = here("results", "figures", "charge-bmi-scatter.png")
 ggsave(filename = figure_file, plot=p7) 
 ```
 
-
+Bar Plot if average charges by number of children
 ```{r}
 p8 <- mydata %>% ggplot(aes(x=as.factor(children), y=charges, fill=as.factor(children))) +
   stat_summary(fun.y=mean, geom="bar") +

@@ -252,11 +252,58 @@ knitr::include_graphics(here("results","figures","children-bar.png"))
 
 *To get some further insight into your data, if reasonable you could compute simple statistics (e.g. simple models with 1 predictor) to look for associations between your outcome(s) and each individual predictor variable. Though note that unless you pre-specified the outcome and main exposure, any "p\<0.05 means statistical significance" interpretation is not valid.*
 
+@tbl-resulttable1 shows a simple model with one predictor using linear regression analysis.
+
+```{r}
+#| label: tbl-resulttable1
+#| tbl-cap: "Simple Models with One Predictor."
+#| echo: FALSE
+simpletable=readRDS("../../results/tables/simple_models_results.rds")
+knitr::kable(simpletable)
+```
+
 ## Full analysis
 
 *Use one or several suitable statistical/machine learning methods to analyze your data and to produce meaningful figures, tables, etc. This might again be code that is best placed in one or several separate R scripts that need to be well documented. You want the code to produce figures and data ready for display as tables, and save those. Then you load them here.*
 
-```{}
+@tbl-resulttable2 shows linear regression analysis charges is analyzed across all predictors.
+
+```{r}
+#| label: tbl-resulttable2
+#| tbl-cap: "Linear Regression Analysis."
+#| echo: FALSE
+lineartable=readRDS("../../results/tables/linear_regression_results.rds")
+knitr::kable(lineartable)
+
+```
+
+@fig-linear helps visualize which features have a significant effect on charges.
+
+```{r}
+#| label: fig-linear
+#| fig-cap: "Linear Regression Coefficients."
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","linear_regression_plot.png"))
+
+```
+
+@tbl-resulttable3 helps to capture complex interaction between features.
+
+```{r}
+#| label: tbl-resulttable3
+#| tbl-cap: "Random Forest Analysis."
+#| echo: FALSE
+rf_table=readRDS("../../results/tables/random_forest_importance.rds")
+knitr::kable(rf_table)
+```
+
+@fig-randomforest helps visualize how each feature have a significant effect on charges.
+
+```{r}
+#| label: fig-randomforest
+#| fig-cap: "Random Forest Feature Importance."
+#| echo: FALSE
+knitr::include_graphics(here("results","figures","random_forest_importance_plot.png"))
 ```
 
 {{< pagebreak >}}
