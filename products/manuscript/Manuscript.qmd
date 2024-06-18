@@ -232,7 +232,7 @@ knitr::include_graphics(here("results","figures","charge-bmi-scatter.png"))
 @fig-children shows bar graph of average insurance charges by number of children
 
 ```{r}
-#| label: fig-chidren
+#| label: fig-children
 #| fig-cap: "Average Insurance Charges by Number of Children."
 #| echo: FALSE
 knitr::include_graphics(here("results","figures","children-bar.png"))
