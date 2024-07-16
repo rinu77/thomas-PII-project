@@ -173,7 +173,7 @@ knitr::kable(resulttable)
 knitr::include_graphics(here("results","figures","bmi_outliers.png"))
 ```
 
-@fig-outliers-charges shows the outliers in charges
+Observation: There are several outliers with BMI values above 50, indicating that there are individuals with unusually high BMI compared to the rest of the dataset.\@fig-outliers-charges shows the outliers in charges
 
 ```{r}
 #| label: fig-outliers-charges
@@ -183,6 +183,8 @@ knitr::include_graphics(here("results","figures","charges-outliers.png"))
 
 ```
 
+Observation: There are numerous outliers with insurance charges above 40,000, indicating that there are individuals with unusually high insurance charges compared to the rest of the dataset.
+
 @fig-charges shows histogram of insurance charges
 
 ```{r}
@@ -191,6 +193,8 @@ knitr::include_graphics(here("results","figures","charges-outliers.png"))
 #| echo: FALSE
 knitr::include_graphics(here("results","figures","Charges-histogram.png"))
 ```
+
+Observation: The histogram shows a right-skewed distribution, indicating that most individuals have lower insurance charges, with fewer individuals having very high charges.
 
 @fig-smoking shows box plot of insurance charges by smoking status
 
@@ -202,6 +206,8 @@ knitr::include_graphics(here("results","figures","charges-smoking-boxplot.png"))
 
 ```
 
+Observation: There is a clear and substantial difference in insurance charges between smokers and non-smokers. Smokers have much higher charges on average. Charges for smokers are more variable than for non-smokers, with a wider range of values. High charges are more common among smokers and are not considered outliers, whereas for non-smokers, such high charges are less common and considered outliers.
+
 @fig-region shows box plot of insurance charges by region
 
 ```{r}
@@ -210,6 +216,8 @@ knitr::include_graphics(here("results","figures","charges-smoking-boxplot.png"))
 #| echo: FALSE
 knitr::include_graphics(here("results","figures","charges-region-boxplot.png"))
 ```
+
+Observation: The Southeast region has the highest median insurance charges, followed by the Northeast, Northwest, and Southwest. The Southwest region has the lowest median charges. All regions have numerous outliers with very high charges, particularly the Southeast and Northeast.
 
 @fig-age shows scatter plot of insurance charges by age
 
@@ -220,6 +228,8 @@ knitr::include_graphics(here("results","figures","charges-region-boxplot.png"))
 knitr::include_graphics(here("results","figures","charge-age-boxplot.png"))
 ```
 
+Observation: There is a clear upward trend in insurance charges as age increases. This suggests that insurance charges tend to increase with age. The relationship appears to be somewhat linear, with higher age associated with higher charges, but there is a noticeable spread in the data.
+
 @fig-bmi shows scatter plot of insurance by BMI
 
 ```{r}
@@ -229,6 +239,8 @@ knitr::include_graphics(here("results","figures","charge-age-boxplot.png"))
 knitr::include_graphics(here("results","figures","charge-bmi-scatter.png"))
 ```
 
+Observation: There is a noticeable upward trend in insurance charges as BMI increases. This suggests that individuals with higher BMI tend to have higher insurance charges. The relationship appears to be somewhat nonlinear, with higher charges associated with higher BMI values, but there is considerable spread in the data.
+
 @fig-children shows bar graph of average insurance charges by number of children
 
 ```{r}
@@ -237,6 +249,8 @@ knitr::include_graphics(here("results","figures","charge-bmi-scatter.png"))
 #| echo: FALSE
 knitr::include_graphics(here("results","figures","children-bar.png"))
 ```
+
+Observation: There is a general trend where insurance charges increase with the number of children up to three children, after which there is a slight decrease for four children, and a significant decrease for five children. The drop in average charges for households with five children could be due to various reasons such as discounts for larger families, different insurance plans, or data anomalies.
 
 ## Basic statistical analysis
 
@@ -250,6 +264,14 @@ simpletable=readRDS("../../results/tables/simple_models_results.rds")
 knitr::kable(simpletable)
 ```
 
+Observation:
+
+-   Age, BMI, number of children, sex, smoking status, and living in the Southeast and Southwest regions are significant predictors of insurance charges.
+
+-   Smoking status has the largest effect on insurance charges, significantly increasing them.
+
+-   The intercept for BMI and living in the Northwest region are not significant predictors of insurance charges in these models.
+
 ## Full analysis
 
 @tbl-resulttable2 shows linear regression analysis charges is analyzed across all predictors.
@@ -262,6 +284,14 @@ lineartable=readRDS("../../results/tables/linear_regression_results.rds")
 knitr::kable(lineartable)
 
 ```
+
+Observation: After the data was split into training and testing, the linear regression analysis was conducted.
+
+-   Age, BMI, number of children, smoking status, and living in the Southeast or Southwest regions are significant predictors of insurance charges.
+
+-   Smoking status still has the largest effect on insurance charges, significantly increasing them.
+
+-   Sex and living in the Northwest region are not significant predictors of insurance charges in this model.
 
 @fig-linear helps visualize which features have a significant effect on charges.
 
@@ -283,6 +313,12 @@ rf_table=readRDS("../../results/tables/random_forest_importance.rds")
 knitr::kable(rf_table)
 ```
 
+Observation:
+
+-   Smoking status, BMI, and age are the most important predictors of insurance charges, followed by the number of children and region. Sex has the least importance.
+
+-   The importance rankings from the random forest analysis are consistent with the findings from the linear regression models, where smoking status, age, and BMI were significant predictors.
+
 @fig-randomforest helps visualize how each feature have a significant effect on charges.
 
 ```{r}
@@ -300,13 +336,149 @@ knitr::include_graphics(here("results","figures","random_forest_importance_plot.
 
 *Summarize what you did, what you found and what it means.*
 
+### What was done:
+
+-   **Data Loading and Preparation**:
+
+    -   Loaded the insurance dataset from a CSV file.
+
+    -   Performed exploratory data analysis to understand the distribution and relationships within the data.
+
+    -   Conducted data cleaning processes, such as handling missing values and transforming variables.
+
+-   **Exploratory Data Analysis (EDA)**:
+
+    -   Visualized the distribution of insurance charges using histograms and box plots.
+
+    -   Examined the relationships between insurance charges and various predictors, including age, BMI, number of children, smoking status, and region.
+
+-   **Statistical Modeling**:
+
+    -   Built simple linear regression models to explore the impact of individual predictors on insurance charges.
+
+    -   Developed a multiple linear regression model to understand the combined effect of multiple predictors on insurance charges.
+
+    -   Conducted a random forest analysis to determine the importance of different features in predicting insurance charges.
+
+-   **Visualization**:
+
+    -   Created various plots, including scatter plots, bar charts, and box plots, to visualize the relationships between predictors and insurance charges.
+
+### What was found:
+
+-   **Key Predictors**:
+
+    -   **Smoking Status**: The most influential predictor, with smokers incurring significantly higher insurance charges compared to non-smokers.
+
+    -   **BMI**: A strong positive relationship with insurance charges, indicating higher charges for individuals with higher BMI.
+
+    -   **Age**: A positive relationship with insurance charges, with charges increasing as age increases.
+
+    -   **Number of Children**: A significant positive impact on insurance charges, although the effect was smaller compared to smoking status, BMI, and age.
+
+    -   **Region**: Regional differences were observed, with the Southeast region associated with higher charges and the Southwest region associated with lower charges.
+
+    -   **Sex**: The impact of sex on insurance charges was negligible.
+
+-   **Feature Importance**:
+
+    -   The random forest analysis confirmed that smoking status, BMI, and age were the most important features in predicting insurance charges.
+
+    -   The number of children and region also contributed to the predictions, while sex had the least importance.
+
+### What it means:
+
+-   **Policy and Pricing**:
+
+    -   The findings highlight the importance of considering multiple factors when setting insurance premiums. Smoking status, BMI, and age are critical factors that significantly impact insurance costs.
+
+    -   Insurance companies can use these insights to adjust premiums more accurately based on the risk profile of individuals.
+
+-   **Health Interventions**:
+
+    -   The strong association between smoking and higher insurance charges underscores the need for targeted health interventions to reduce smoking rates, which could, in turn, lower insurance costs.
+
+    -   Addressing obesity through health programs could also help reduce insurance charges associated with higher BMI.
+
+-   **Regional Considerations**:
+
+    -   Regional differences in insurance charges suggest that localized strategies might be necessary to address specific regional health challenges and cost structures.
+
+-   **Further Research**:
+
+    -   Future studies could explore the interactions between these key predictors to understand their combined effects on insurance charges.
+
+    -   Additional data could be collected to validate these findings and explore other potential predictors.
+
 ## Strengths and Limitations
 
 *Discuss what you perceive as strengths and limitations of your analysis.*
 
+### Strengths:
+
+1.  **Comprehensive Exploratory Data Analysis (EDA)**:
+
+    -   Detailed EDA helped in understanding the distribution and relationships within the data.
+
+    -   Visualizations such as histograms, box plots, scatter plots, and bar charts provided clear insights into the data and highlighted important patterns.
+
+2.  **Use of Multiple Statistical Methods**:
+
+    -   Employed both linear regression and random forest models to analyze the data.
+
+    -   Linear regression provided insights into the individual and combined effects of predictors.
+
+    -   Random forest analysis helped in identifying the importance of different features.
+
+3.  **Handling of Categorical Variables**:
+
+    -   Effectively transformed and factored categorical variables to ensure accurate modeling.
+
+    -   Considered regional differences and the impact of smoking status, which are critical factors in insurance pricing.
+
+4.  **Feature Importance Analysis**:
+
+    -   The random forest feature importance analysis provided a clear ranking of predictors, confirming the results of the linear regression models.
+
+5.  **Clear and Informative Visualizations**:
+
+    -   Created visualizations that were easy to interpret and clearly illustrated the relationships between variables and insurance charges.
+
+6.  **Thorough Interpretation**:
+
+    -   Provided detailed interpretations of the results, explaining the significance and impact of each predictor on insurance charges.
+
+### Limitations:
+
+-   **Assumptions of Linear Regression**:
+
+    -   Linear regression models assume linear relationships between predictors and the outcome, which may not fully capture more complex, non-linear relationships.
+
+    -   Assumes independence of observations, which might not hold true in real-world data.
+
+-   **Potential Overfitting with Random Forest**:
+
+    -   Random forest models can be prone to overfitting, especially with a small dataset or highly correlated features.
+
+    -   Overfitting might lead to overly optimistic feature importance scores that do not generalize well to new data.
+
+-   **Outliers and Data Distribution**:
+
+    -   The dataset contains outliers, particularly in insurance charges, which can impact the results of linear regression models.
+
+    -   The skewed distribution of insurance charges might affect the assumptions of normality in linear regression.
+
+-   **Limited Dataset**:
+
+    -   The analysis was conducted on a specific insurance dataset, which may limit the generalizability of the findings to other datasets or populations.
+
+    -   Potential biases in the dataset could affect the results and their applicability.
+
 ## Conclusions
 
 *What are the main take-home messages?*
+
+The analysis highlights the significant factors affecting insurance charges and provides valuable insights for insurance pricing and policy formulation. By focusing on key predictors such as smoking status, BMI, age, number of children, and region, and considering their combined effects, insurance companies can develop more accurate and equitable pricing strategies. Additionally, public health interventions targeting smoking and obesity can help reduce overall insurance costs. Continued research and validation are essential to further refine these insights and ensure their applicability across diverse populations and datasets.
 
 *Include citations in your Rmd file using bibtex, the list of references will automatically be placed at the end*
 
