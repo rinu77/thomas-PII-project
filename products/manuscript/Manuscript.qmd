@@ -482,7 +482,11 @@ The analysis highlights the significant factors affecting insurance charges and 
 
 *Include citations in your Rmd file using bibtex, the list of references will automatically be placed at the end*
 
-This paper [@leek2015] discusses types of analyses.
+This paper [@careinsurance_smoker] discusses types of analyses.
+
+This paper [@experian_premium_factors] discusses types of analyses.
+
+This paper [@choi_blackburn_2018] discusses types of analyses.
 
 These papers [@mckay2020; @mckay2020a] are good examples of papers published using a fully reproducible setup similar to the one shown in this template.
 
