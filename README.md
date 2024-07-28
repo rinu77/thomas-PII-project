@@ -1,8 +1,6 @@
 # Overview
 
-This repository is built for my data analysis project/paper done with R/Quarto/Github. 
-I have completed a research project to develop a predictive model to estimate medical insurance costs for individuals based on their health-related and personal attributes. To reproduce this project, open and render the `Manuscript.qmd` file found under the   `products` folder to generate the Word document
-
+This repository contains the complete materials for my data analysis project and paper, developed using R, Quarto, and GitHub. The project focuses on creating a predictive model to estimate medical insurance costs for individuals based on their health-related and personal attributes. To replicate the findings, navigate to the products folder and open the Manuscript.qmd file. Rendering this file will generate a Word document detailing the research and analysis conducted.
 
 # Template structure and content
 
