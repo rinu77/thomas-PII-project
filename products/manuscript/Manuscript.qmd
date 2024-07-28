@@ -150,6 +150,8 @@ The data will be built and analyzed as follows:
     -   Random Forest Model
     -   Model Evaluation
 
+{{< pagebreak >}}
+
 # Results
 
 ## Exploratory/Descriptive analysis
@@ -164,6 +166,8 @@ resulttable=readRDS("../../results/tables/summarytable2.rds")
 knitr::kable(resulttable)
 ```
 
+{{< pagebreak >}}
+
 @fig-outliers-bmi shows the outliers in BMI
 
 ```{r}
@@ -173,7 +177,11 @@ knitr::kable(resulttable)
 knitr::include_graphics(here("results","figures","bmi_outliers.png"))
 ```
 
-Observation: There are several outliers with BMI values above 50, indicating that there are individuals with unusually high BMI compared to the rest of the dataset.\@fig-outliers-charges shows the outliers in charges
+Observation: There are several outliers with BMI values above 50, indicating that there are individuals with unusually high BMI compared to the rest of the dataset.\@fig-outliers-charges shows the outliers in charges.
+
+{{< pagebreak >}}
+
+@fig-outliers-charges shows the outliers in Charges
 
 ```{r}
 #| label: fig-outliers-charges
@@ -185,6 +193,8 @@ knitr::include_graphics(here("results","figures","charges-outliers.png"))
 
 Observation: There are numerous outliers with insurance charges above 40,000, indicating that there are individuals with unusually high insurance charges compared to the rest of the dataset.
 
+{{< pagebreak >}}
+
 @fig-charges shows histogram of insurance charges
 
 ```{r}
@@ -195,6 +205,8 @@ knitr::include_graphics(here("results","figures","Charges-histogram.png"))
 ```
 
 Observation: The histogram shows a right-skewed distribution, indicating that most individuals have lower insurance charges, with fewer individuals having very high charges.
+
+{{< pagebreak >}}
 
 @fig-smoking shows box plot of insurance charges by smoking status
 
@@ -208,6 +220,8 @@ knitr::include_graphics(here("results","figures","charges-smoking-boxplot.png"))
 
 Observation: There is a clear and substantial difference in insurance charges between smokers and non-smokers. Smokers have much higher charges on average. Charges for smokers are more variable than for non-smokers, with a wider range of values. High charges are more common among smokers and are not considered outliers, whereas for non-smokers, such high charges are less common and considered outliers.
 
+{{< pagebreak >}}
+
 @fig-region shows box plot of insurance charges by region
 
 ```{r}
@@ -218,6 +232,8 @@ knitr::include_graphics(here("results","figures","charges-region-boxplot.png"))
 ```
 
 Observation: The Southeast region has the highest median insurance charges, followed by the Northeast, Northwest, and Southwest. The Southwest region has the lowest median charges. All regions have numerous outliers with very high charges, particularly the Southeast and Northeast.
+
+{{< pagebreak >}}
 
 @fig-age shows scatter plot of insurance charges by age
 
@@ -230,6 +246,8 @@ knitr::include_graphics(here("results","figures","charge-age-boxplot.png"))
 
 Observation: There is a clear upward trend in insurance charges as age increases. This suggests that insurance charges tend to increase with age. The relationship appears to be somewhat linear, with higher age associated with higher charges, but there is a noticeable spread in the data.
 
+{{< pagebreak >}}
+
 @fig-bmi shows scatter plot of insurance by BMI
 
 ```{r}
@@ -241,6 +259,8 @@ knitr::include_graphics(here("results","figures","charge-bmi-scatter.png"))
 
 Observation: There is a noticeable upward trend in insurance charges as BMI increases. This suggests that individuals with higher BMI tend to have higher insurance charges. The relationship appears to be somewhat nonlinear, with higher charges associated with higher BMI values, but there is considerable spread in the data.
 
+{{< pagebreak >}}
+
 @fig-children shows bar graph of average insurance charges by number of children
 
 ```{r}
@@ -251,6 +271,8 @@ knitr::include_graphics(here("results","figures","children-bar.png"))
 ```
 
 Observation: There is a general trend where insurance charges increase with the number of children up to three children, after which there is a slight decrease for four children, and a significant decrease for five children. The drop in average charges for households with five children could be due to various reasons such as discounts for larger families, different insurance plans, or data anomalies.
+
+{{< pagebreak >}}
 
 ## Basic statistical analysis
 
@@ -271,6 +293,8 @@ Observation:
 -   Smoking status has the largest effect on insurance charges, significantly increasing them.
 
 -   The intercept for BMI and living in the Northwest region are not significant predictors of insurance charges in these models.
+
+{{< pagebreak >}}
 
 ## Full analysis
 
@@ -293,6 +317,8 @@ Observation: After the data was split into training and testing, the linear regr
 
 -   Sex and living in the Northwest region are not significant predictors of insurance charges in this model.
 
+{{< pagebreak >}}
+
 @fig-linear helps visualize which features have a significant effect on charges.
 
 ```{r}
@@ -302,6 +328,8 @@ Observation: After the data was split into training and testing, the linear regr
 knitr::include_graphics(here("results","figures","linear_regression_plot.png"))
 
 ```
+
+{{< pagebreak >}}
 
 @tbl-resulttable3 helps to capture complex interaction between features.
 
@@ -318,6 +346,8 @@ Observation:
 -   Smoking status, BMI, and age are the most important predictors of insurance charges, followed by the number of children and region. Sex has the least importance.
 
 -   The importance rankings from the random forest analysis are consistent with the findings from the linear regression models, where smoking status, age, and BMI were significant predictors.
+
+{{< pagebreak >}}
 
 @fig-randomforest helps visualize how each feature have a significant effect on charges.
 
@@ -480,17 +510,11 @@ knitr::include_graphics(here("results","figures","random_forest_importance_plot.
 
 The analysis highlights the significant factors affecting insurance charges and provides valuable insights for insurance pricing and policy formulation. By focusing on key predictors such as smoking status, BMI, age, number of children, and region, and considering their combined effects, insurance companies can develop more accurate and equitable pricing strategies. Additionally, public health interventions targeting smoking and obesity can help reduce overall insurance costs. Continued research and validation are essential to further refine these insights and ensure their applicability across diverse populations and datasets.
 
-*Include citations in your Rmd file using bibtex, the list of references will automatically be placed at the end*
+This website [@careinsurance_smoker] discusses the challenges smokers face in obtaining health insurance, highlighting how smoking affects premium costs..
 
-This paper [@careinsurance_smoker] discusses types of analyses.
+This Experian website [@experian_premium_factors] explains various factors that affect health insurance premium costs, including age, location, tobacco use, type of plan, and individual vs. family enrollment. It provides insights on how these factors influence the overall cost of health insurance for consumers..
 
-This paper [@experian_premium_factors] discusses types of analyses.
-
-This paper [@choi_blackburn_2018] discusses types of analyses.
-
-These papers [@mckay2020; @mckay2020a] are good examples of papers published using a fully reproducible setup similar to the one shown in this template.
-
-Note that this cited reference will show up at the end of the document, the reference formatting is determined by the CSL file specified in the YAML header. Many more style files for almost any journal [are available](https://www.zotero.org/styles). You also specify the location of your bibtex reference file in the YAML. You can call your reference file anything you like.
+The article [@choi_blackburn_2018] examines how household sociodemographic characteristics influence health insurance premiums and medical expenses. Using data from the 2014 Consumer Expenditure Survey, the study identifies that age, marital status, educational attainment, and family income are significant predictors of higher spending on health insurance premiums and medical expenses. .
 
 {{< pagebreak >}}
 
