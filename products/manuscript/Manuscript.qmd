@@ -177,7 +177,7 @@ knitr::kable(resulttable)
 knitr::include_graphics(here("results","figures","bmi_outliers.png"))
 ```
 
-Observation: There are several outliers with BMI values above 50, indicating that there are individuals with unusually high BMI compared to the rest of the dataset.\@fig-outliers-charges shows the outliers in charges.
+**Observation:** There are several outliers with BMI values above 50, indicating that there are individuals with unusually high BMI compared to the rest of the dataset.\@fig-outliers-charges shows the outliers in charges.
 
 {{< pagebreak >}}
 
@@ -191,7 +191,7 @@ knitr::include_graphics(here("results","figures","charges-outliers.png"))
 
 ```
 
-Observation: There are numerous outliers with insurance charges above 40,000, indicating that there are individuals with unusually high insurance charges compared to the rest of the dataset.
+**Observation:** There are numerous outliers with insurance charges above 40,000, indicating that there are individuals with unusually high insurance charges compared to the rest of the dataset.
 
 {{< pagebreak >}}
 
@@ -204,7 +204,7 @@ Observation: There are numerous outliers with insurance charges above 40,000, in
 knitr::include_graphics(here("results","figures","Charges-histogram.png"))
 ```
 
-Observation: The histogram shows a right-skewed distribution, indicating that most individuals have lower insurance charges, with fewer individuals having very high charges.
+**Observation:** The histogram shows a right-skewed distribution, indicating that most individuals have lower insurance charges, with fewer individuals having very high charges.
 
 {{< pagebreak >}}
 
@@ -218,7 +218,7 @@ knitr::include_graphics(here("results","figures","charges-smoking-boxplot.png"))
 
 ```
 
-Observation: There is a clear and substantial difference in insurance charges between smokers and non-smokers. Smokers have much higher charges on average. Charges for smokers are more variable than for non-smokers, with a wider range of values. High charges are more common among smokers and are not considered outliers, whereas for non-smokers, such high charges are less common and considered outliers.
+**Observation:** There is a clear and substantial difference in insurance charges between smokers and non-smokers. Smokers have much higher charges on average. Charges for smokers are more variable than for non-smokers, with a wider range of values. High charges are more common among smokers and are not considered outliers, whereas for non-smokers, such high charges are less common and considered outliers.
 
 {{< pagebreak >}}
 
@@ -231,7 +231,7 @@ Observation: There is a clear and substantial difference in insurance charges be
 knitr::include_graphics(here("results","figures","charges-region-boxplot.png"))
 ```
 
-Observation: The Southeast region has the highest median insurance charges, followed by the Northeast, Northwest, and Southwest. The Southwest region has the lowest median charges. All regions have numerous outliers with very high charges, particularly the Southeast and Northeast.
+**Observation:** The Southeast region has the highest median insurance charges, followed by the Northeast, Northwest, and Southwest. The Southwest region has the lowest median charges. All regions have numerous outliers with very high charges, particularly the Southeast and Northeast.
 
 {{< pagebreak >}}
 
@@ -244,7 +244,7 @@ Observation: The Southeast region has the highest median insurance charges, foll
 knitr::include_graphics(here("results","figures","charge-age-boxplot.png"))
 ```
 
-Observation: There is a clear upward trend in insurance charges as age increases. This suggests that insurance charges tend to increase with age. The relationship appears to be somewhat linear, with higher age associated with higher charges, but there is a noticeable spread in the data.
+**Observation:** There is a clear upward trend in insurance charges as age increases. This suggests that insurance charges tend to increase with age. The relationship appears to be somewhat linear, with higher age associated with higher charges, but there is a noticeable spread in the data.
 
 {{< pagebreak >}}
 
@@ -257,7 +257,7 @@ Observation: There is a clear upward trend in insurance charges as age increases
 knitr::include_graphics(here("results","figures","charge-bmi-scatter.png"))
 ```
 
-Observation: There is a noticeable upward trend in insurance charges as BMI increases. This suggests that individuals with higher BMI tend to have higher insurance charges. The relationship appears to be somewhat nonlinear, with higher charges associated with higher BMI values, but there is considerable spread in the data.
+**Observation:** There is a noticeable upward trend in insurance charges as BMI increases. This suggests that individuals with higher BMI tend to have higher insurance charges. The relationship appears to be somewhat nonlinear, with higher charges associated with higher BMI values, but there is considerable spread in the data.
 
 {{< pagebreak >}}
 
@@ -270,7 +270,7 @@ Observation: There is a noticeable upward trend in insurance charges as BMI incr
 knitr::include_graphics(here("results","figures","children-bar.png"))
 ```
 
-Observation: There is a general trend where insurance charges increase with the number of children up to three children, after which there is a slight decrease for four children, and a significant decrease for five children. The drop in average charges for households with five children could be due to various reasons such as discounts for larger families, different insurance plans, or data anomalies.
+**Observation:** There is a general trend where insurance charges increase with the number of children up to three children, after which there is a slight decrease for four children, and a significant decrease for five children. The drop in average charges for households with five children could be due to various reasons such as discounts for larger families, different insurance plans, or data anomalies.
 
 {{< pagebreak >}}
 
@@ -286,7 +286,7 @@ simpletable=readRDS("../../results/tables/simple_models_results.rds")
 knitr::kable(simpletable)
 ```
 
-Observation:
+**Observation:**
 
 -   Age, BMI, number of children, sex, smoking status, and living in the Southeast and Southwest regions are significant predictors of insurance charges.
 
@@ -309,7 +309,7 @@ knitr::kable(lineartable)
 
 ```
 
-Observation: After the data was split into training and testing, the linear regression analysis was conducted.
+**Observation:** After the data was split into training and testing, the linear regression analysis was conducted.
 
 -   Age, BMI, number of children, smoking status, and living in the Southeast or Southwest regions are significant predictors of insurance charges.
 
@@ -341,7 +341,7 @@ rf_table=readRDS("../../results/tables/random_forest_importance.rds")
 knitr::kable(rf_table)
 ```
 
-Observation:
+**Observation:**
 
 -   Smoking status, BMI, and age are the most important predictors of insurance charges, followed by the number of children and region. Sex has the least importance.
 
@@ -363,8 +363,6 @@ knitr::include_graphics(here("results","figures","random_forest_importance_plot.
 # Discussion
 
 ## Summary and Interpretation
-
-*Summarize what you did, what you found and what it means.*
 
 ### What was done:
 
@@ -442,8 +440,6 @@ knitr::include_graphics(here("results","figures","random_forest_importance_plot.
 
 ## Strengths and Limitations
 
-*Discuss what you perceive as strengths and limitations of your analysis.*
-
 ### Strengths:
 
 1.  **Comprehensive Exploratory Data Analysis (EDA)**:
@@ -506,9 +502,9 @@ knitr::include_graphics(here("results","figures","random_forest_importance_plot.
 
 ## Conclusions
 
-*What are the main take-home messages?*
-
 The analysis highlights the significant factors affecting insurance charges and provides valuable insights for insurance pricing and policy formulation. By focusing on key predictors such as smoking status, BMI, age, number of children, and region, and considering their combined effects, insurance companies can develop more accurate and equitable pricing strategies. Additionally, public health interventions targeting smoking and obesity can help reduce overall insurance costs. Continued research and validation are essential to further refine these insights and ensure their applicability across diverse populations and datasets.
+
+A few online resources that helped with my research:
 
 This website [@careinsurance_smoker] discusses the challenges smokers face in obtaining health insurance, highlighting how smoking affects premium costs..
 
