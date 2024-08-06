@@ -3,10 +3,7 @@
 #
 #this script loads the raw data, processes and cleans it 
 #and saves it as Rds file in the processed-data folder
-#
-# Note the ## ---- name ---- notation
-# This is done so one can pull in the chunks of code into the Quarto document
-# see here: https://bookdown.org/yihui/rmarkdown-cookbook/read-chunk.html
+# 
 ###############################
 
 

@@ -3,7 +3,8 @@
 # running linear regression and random forest models and 
 # finally conducting model evaluation
 
-#this script loads the processed, cleaned data, does a simple analysis
+#this script loads the processed, cleaned data, does a linear regression and
+# random forest analysis
 #and saves the results to the results folder
 
 # Load needed packages
