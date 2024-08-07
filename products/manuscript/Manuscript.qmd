@@ -499,6 +499,8 @@ knitr::include_graphics(here("results","figures","random_forest_importance_plot.
 
     -   Potential biases in the dataset could affect the results and their applicability.
 
+{{< pagebreak >}}
+
 ## Conclusions
 
 The analysis highlights the significant factors affecting insurance charges and provides valuable insights for insurance pricing and policy formulation. By focusing on key predictors such as smoking status, BMI, age, number of children, and region, and considering their combined effects, insurance companies can develop more accurate and equitable pricing strategies. Additionally, public health interventions targeting smoking and obesity can help reduce overall insurance costs. Continued research and validation are essential to further refine these insights and ensure their applicability across diverse populations and datasets.
@@ -509,7 +511,7 @@ This website [@careinsurance_smoker] discusses the challenges smokers face in ob
 
 This Experian website [@experian_premium_factors] explains various factors that affect health insurance premium costs, including age, location, tobacco use, type of plan, and individual vs. family enrollment. It provides insights on how these factors influence the overall cost of health insurance for consumers..
 
-The article [@choi_blackburn_2018] examines how household sociodemographic characteristics influence health insurance premiums and medical expenses. Using data from the 2014 Consumer Expenditure Survey, the study identifies that age, marital status, educational attainment, and family income are significant predictors of higher spending on health insurance premiums and medical expenses. .
+The article [@choi_blackburn_2018] examines how household socio-demographic characteristics influence health insurance premiums and medical expenses. Using data from the 2014 Consumer Expenditure Survey, the study identifies that age, marital status, educational attainment, and family income are significant predictors of higher spending on health insurance premiums and medical expenses. .
 
 {{< pagebreak >}}
 
